@@ -21,8 +21,8 @@ namespace SqlDataAccess.Context
             modelBuilder.ApplyConfiguration(new InternalDataConfiguration());
             modelBuilder.ApplyConfiguration(new MonthConfiguration());
             modelBuilder.ApplyConfiguration(new MonthInternalDataConfiguration());
-            modelBuilder.ApplyConfiguration(new MonthExternalDataConfiguration())
-                ;
+            modelBuilder.ApplyConfiguration(new MonthExternalDataConfiguration());
+            
             base.OnModelCreating(modelBuilder); 
         }
 

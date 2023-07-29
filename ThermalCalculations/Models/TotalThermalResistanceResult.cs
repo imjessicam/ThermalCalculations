@@ -12,6 +12,8 @@
 
         public decimal HeatTransferCoefficient { get; set; }
 
+        public decimal TemperatureFactor { get; set; }
+
         public bool IsPartitionSystemCorrect { get; set; }
     }
 }

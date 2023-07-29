@@ -41,6 +41,7 @@ namespace ThermalCalculations.Controllers
                 result.PartitionLayerResistance.Add(resistanceLayer);
             }
 
+            // DETERMINATION OF THE HEAT TRANSFER COEFFICIENT
 
             result.TotalResistance = result.PartitionLayerResistance.Select(x => x.Resistance).Sum() 
                 + model.InternalHeatResisatnce 
@@ -51,6 +52,13 @@ namespace ThermalCalculations.Controllers
 
             result.HeatTransferCoefficient = 1.0M / result.TotalResistance;
             result.IsPartitionSystemCorrect = result.HeatTransferCoefficient <= MaxHeatTransferCoefficient;
+
+            // DETERMINATION OF THE TEMPERATURE FACTOR OF THE PARTITION SURFACE
+
+            // value based on the partition
+            const decimal InternalHeatResistanceForTemperatureFactor = 0.25M;
+
+            result.TemperatureFactor = (result.TotalResistance - InternalHeatResistanceForTemperatureFactor) / result.TotalResistance;
 
             return Ok(result);
         }
